@@ -1,16 +1,8 @@
 using UnityEngine;
 
-public class PlayerIdle : MonoBehaviour
+public class PlayerIdle : PlayerGrounded
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public PlayerIdle(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

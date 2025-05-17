@@ -25,9 +25,9 @@ public class Core : MonoBehaviour
         colSense = GetComponentInChildren<CollisionSense>();
     }
 
-    private void LogicUpdate()
+    public void LogicUpdate()
     {
-        // movement.LogicUpdate();
+        movement.LogicUpdate();
         // colSense.LogicUpdate(); 
     }
 }
