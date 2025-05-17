@@ -4,17 +4,16 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region Player States
-    PlayerIdle playerIdleState;
-    PlayerMoving playerMovingState;
-    PlayerJumping playerJumpingState;
-    PlayerLanded playerLandedState;
-    PlayerInAir playerInAirState;
-
-    PlayerStateMachine stateMachine;
+    public PlayerIdle playerIdleState { get; private set; }
+    public PlayerMoving playerMovingState { get; private set; }
+    public PlayerJumping playerJumpingState { get; private set; }
+    public PlayerLanded playerLandedState { get; private set; }
+    public PlayerInAir playerInAirState { get; private set; }
+    public PlayerStateMachine stateMachine { get; private set; }
     #endregion
 
-    PlayerInputHandler inputHandler;
-    Core core;
+    public PlayerInputHandler inputHandler { get; private set; }
+    public Core core { get; private set; }
     [SerializeField] PlayerData playerData;
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }

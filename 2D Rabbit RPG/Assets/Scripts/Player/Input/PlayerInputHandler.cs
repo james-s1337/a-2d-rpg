@@ -4,23 +4,27 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     private Vector2 movementInput;
+    public int NormInputX { get; private set; }
+    public int NormInputY { get; private set; }
+    public bool jumpInput { get; private set; }
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();
-        Debug.Log(movementInput);
+
+        NormInputX = Mathf.RoundToInt(movementInput.x);
+        NormInputY = Mathf.RoundToInt(movementInput.y);
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Debug.Log("Jump pushed down");
+            jumpInput = true;
         }
-        // context.performed if button is being held down
-        else if (context.canceled)
+
+        if (context.canceled)
         {
-            Debug.Log("Jump input stopped");
         }
     }
 }

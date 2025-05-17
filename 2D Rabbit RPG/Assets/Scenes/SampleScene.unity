@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039c182187d89ef41ac38d7e7aea267f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 45b357906bc34084db2720cadd2d750f, type: 2}
 --- !u!212 &237494070
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -574,7 +575,7 @@ GameObject:
   - component: {fileID: 648513060}
   - component: {fileID: 648513059}
   - component: {fileID: 648513058}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -787,6 +788,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d08ba0b701eb434bb8792d5698a06f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundCheck: {fileID: 1395195133}
+  groundCheckRadius: 0.5
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1833828631
 GameObject:
   m_ObjectHideFlags: 0
