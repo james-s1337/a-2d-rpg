@@ -18,7 +18,6 @@ public class PlayerMoving : PlayerGrounded
         base.LogicUpdate();
 
         core.Movement.CheckIfShouldFlip(xInput);
-
         core.Movement.SetVelocityX(playerData.movementSpeed * xInput);
 
         if (!isExitingState)

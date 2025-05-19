@@ -23,7 +23,7 @@ public class PlayerGrounded : PlayerState
     {
         base.Enter();
 
-        // player.playerJumpingState.ResetJumps();
+        player.playerJumpingState.ResetAmountOfJumpsLeft();
     }
 
     public override void Exit()
@@ -48,15 +48,17 @@ public class PlayerGrounded : PlayerState
         {
             stateMachine.ChangeState(player.SecondaryAttackState);
         }
-        else if (JumpInput && player.JumpState.CanJump())
+        */
+        if (jumpInput && player.playerJumpingState.CanJump())
         {
-            stateMachine.ChangeState(player.JumpState);
+            stateMachine.SwitchState(player.playerJumpingState);
         }
         else if (!isGrounded)
         {
-            player.InAirState.StartCoyoteTime();
-            stateMachine.ChangeState(player.InAirState);
+            player.playerInAirState.StartCoyoteTime();
+            stateMachine.SwitchState(player.playerInAirState);
         }
+        /*
         else if (isTouchingWall && grabInput && isTouchingLedge)
         {
             stateMachine.ChangeState(player.WallGrabState);
@@ -65,7 +67,6 @@ public class PlayerGrounded : PlayerState
         {
             stateMachine.ChangeState(player.DashState);
         }
-
         */
     }
 

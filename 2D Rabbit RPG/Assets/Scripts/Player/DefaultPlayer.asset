@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4f1bfadc4cef4246b70183aa2b1d2ea, type: 3}
   m_Name: DefaultPlayer
   m_EditorClassIdentifier: 
-  movementSpeed: 10
-  jumpPower: 10
-  jumps: 1
+  movementSpeed: 6
+  jumpPower: 15
+  jumps: 2
+  coyoteTime: 0.2
+  jumpMult: 0.6
   health: 10
