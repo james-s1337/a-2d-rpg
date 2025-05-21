@@ -15,6 +15,6 @@ MonoBehaviour:
   movementSpeed: 6
   jumpPower: 15
   jumps: 2
-  coyoteTime: 0.2
+  coyoteTime: 0.25
   jumpMult: 0.6
   health: 10

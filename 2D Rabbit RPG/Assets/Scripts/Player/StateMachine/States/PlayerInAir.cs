@@ -47,6 +47,7 @@ public class PlayerInAir : PlayerState
         }
         else if (jumpInput && player.playerJumpingState.CanJump())
         {
+            coyoteTime = false;
             stateMachine.SwitchState(player.playerJumpingState);
         }
         else

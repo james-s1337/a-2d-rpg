@@ -38,6 +38,7 @@ public class PlayerGrounded : PlayerState
         xInput = player.inputHandler.NormInputX;
         yInput = player.inputHandler.NormInputY;
         jumpInput = player.inputHandler.jumpInput;
+        isGrounded = core.CollisionSenses.Ground;
 
         /*
         if (player.inputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)
