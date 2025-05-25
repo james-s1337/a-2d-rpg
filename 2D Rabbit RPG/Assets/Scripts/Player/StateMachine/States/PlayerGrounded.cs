@@ -50,7 +50,11 @@ public class PlayerGrounded : PlayerState
             stateMachine.ChangeState(player.SecondaryAttackState);
         }
         */
-        if (jumpInput && player.playerJumpingState.CanJump())
+        if (player.inputHandler.attackInput)
+        {
+            stateMachine.SwitchState(player.playerAttackingState);
+        }
+        else if (jumpInput && player.playerJumpingState.CanJump())
         {
             stateMachine.SwitchState(player.playerJumpingState);
         }

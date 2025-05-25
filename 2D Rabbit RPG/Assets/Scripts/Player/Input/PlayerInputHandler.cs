@@ -8,6 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
     public int NormInputY { get; private set; }
     public bool jumpInput { get; private set; }
     public bool jumpInputStop { get; private set; }
+    public bool attackInput;
     private float inputHoldTime = 0.2f;
     private float jumpInputStartTime;
 
@@ -21,6 +22,17 @@ public class PlayerInputHandler : MonoBehaviour
         CheckJumpInputHoldTime();
     }
 
+    public void OnAttackInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            attackInput = true;
+        }
+        else if (context.canceled)
+        {
+            attackInput = false;
+        }
+    }
     public void OnMoveInput(InputAction.CallbackContext context)
     {
         movementInput = context.ReadValue<Vector2>();

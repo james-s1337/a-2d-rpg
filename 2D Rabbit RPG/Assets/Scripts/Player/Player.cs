@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     public PlayerJumping playerJumpingState { get; private set; }
     public PlayerLanded playerLandedState { get; private set; }
     public PlayerInAir playerInAirState { get; private set; }
+    public PlayerAttacking playerAttackingState { get; private set; }
     public PlayerStateMachine stateMachine { get; private set; }
     #endregion
 
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerData playerData;
     public Animator anim { get; private set; }
     public Rigidbody2D rb { get; private set; }
+    public Weapon weapon { get; private set; }
 
     private void Awake()
     {
@@ -28,7 +30,13 @@ public class Player : MonoBehaviour
         playerMovingState = new PlayerMoving(this, stateMachine, playerData, "move");
         playerJumpingState = new PlayerJumping(this, stateMachine, playerData, "inAir");
         playerLandedState = new PlayerLanded(this, stateMachine, playerData, "land");
-        playerInAirState = new PlayerInAir(this, stateMachine, playerData, "inAir");       
+        playerInAirState = new PlayerInAir(this, stateMachine, playerData, "inAir");
+        playerAttackingState = new PlayerAttacking(this, stateMachine, playerData, "attacking");
+
+        weapon = GetComponentInChildren<Weapon>();
+        weapon.gameObject.SetActive(false);
+        playerAttackingState.SetWeap(weapon);
+        Debug.Log(weapon);
     }
 
     private void Start()
@@ -51,7 +59,7 @@ public class Player : MonoBehaviour
         stateMachine.currentState.LogicUpdate();
     }
 
-    private void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
+    public void AnimationTrigger() => stateMachine.currentState.AnimationTrigger();
 
-    private void AnimtionFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
+    public void AnimationFinishTrigger() => stateMachine.currentState.AnimationFinishTrigger();
 }
