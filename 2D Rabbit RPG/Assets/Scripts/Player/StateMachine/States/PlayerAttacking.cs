@@ -78,5 +78,6 @@ public class PlayerAttacking : PlayerAbility
         base.AnimationFinishTrigger();
 
         isAbilityDone = true;
+        setVelocity = false;
     }
 }
