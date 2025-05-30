@@ -44,8 +44,16 @@ public class EnemyAI : MonoBehaviour
         {
             detector.Detect(aiData);
         }
-    }
 
+        float[] danger = new float[8];
+        float[] interest = new float[8];
+
+        foreach (SteeringBehaviour behaviour in steeringBehaviours)
+        {
+            (danger, interest) = behaviour.GetSteering(danger, interest, aiData);
+        }
+    }
+    /*
     private void Update()
     {
         //Enemy AI movement based on Target availability
@@ -101,4 +109,5 @@ public class EnemyAI : MonoBehaviour
         }
 
     }
+    */
 }
