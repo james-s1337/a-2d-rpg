@@ -28,9 +28,10 @@ public class TargetDetector : Detector
             Vector2 direction = (playerCollider.transform.position - transform.position).normalized;
             RaycastHit2D hit =
                 Physics2D.Raycast(transform.position, direction, targetDetectionRange, obstaclesLayerMask);
+            Collider2D otherHit = Physics2D.OverlapCircle(playerCollider.transform.position, 0.15f, obstaclesLayerMask);
 
             //Make sure that the collider we see is on the "Player" layer
-            if (hit.collider != null && (playerLayerMask & (1 << hit.collider.gameObject.layer)) != 0)
+            if (hit.collider != null && (playerLayerMask & (1 << hit.collider.gameObject.layer)) != 0 && (playerCollider.tag == "Player" || (!otherHit || (otherHit && otherHit.tag != "Ground") )))
             {
                 Debug.DrawRay(transform.position, direction * targetDetectionRange, Color.magenta);
                 colliders = new List<Transform>() { playerCollider.transform };
