@@ -64,7 +64,7 @@ public class EnemyAI : MonoBehaviour
         randomPos = gameObject.transform.position + new Vector3(Random.Range(-2.0f, 2.0f), Random.Range(-2.0f, 2.0f), 0);
         opp.position = randomPos;
     }
-    
+    /*
     private void Update()
     {
         //Enemy AI movement based on Target availability
@@ -95,6 +95,29 @@ public class EnemyAI : MonoBehaviour
         }
             //Moving the Agent
             OnMovementInput?.Invoke(movementInput);
+    }
+    */
+
+    private void Update()
+    {
+        //Enemy AI movement based on Target availability
+        if (aiData.currentTarget != null)
+        {
+            //Looking at the Target
+            OnPointerInput?.Invoke(aiData.currentTarget.position);
+            if (following == false)
+            {
+                following = true;
+                StartCoroutine(ChaseAndAttack());
+            }
+        }
+        else if (aiData.GetTargetsCount() > 0)
+        {
+            //Target acquisition logic
+            aiData.currentTarget = aiData.targets[0];
+        }
+        //Moving the Agent
+        OnMovementInput?.Invoke(movementInput);
     }
 
     private IEnumerator ChaseAndAttack()
